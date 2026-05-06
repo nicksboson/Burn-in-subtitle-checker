@@ -29,11 +29,11 @@ def compare_entry(entry):
     if length_diff > 5:
         final_score -= 5
 
-    final_score = max(0, min(100, final_score))
+    final_score = max(0, min(100, final_score)) / 100.0
 
-    if final_score >= 90:
+    if final_score >= 0.90:
         status = "OK"
-    elif final_score >= 70:
+    elif final_score >= 0.70:
         status = "CHECK"
     else:
         status = "REVIEW"

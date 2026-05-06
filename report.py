@@ -7,7 +7,7 @@ def generate_html(results):
             - timestamp (float): Time position in the media.
             - audio     (str):   Transcribed audio text.
             - subtitle  (str):   Burnt-in subtitle text.
-            - score     (float): Similarity score (0–100).
+            - score     (float): Similarity score (0.0–1.0).
             - status    (str):   "OK", "CHECK", or "REVIEW".
 
     Output:
@@ -37,7 +37,7 @@ def generate_html(results):
                 <td class="ts">{r['timestamp']:.2f}s</td>
                 <td>{r['audio']}</td>
                 <td>{r['subtitle']}</td>
-                <td class="score">{r['score']:.1f}</td>
+                <td class="score">{r['score']:.2f}</td>
                 <td><span class="badge {row_cls}">{status}</span></td>
             </tr>"""
 
