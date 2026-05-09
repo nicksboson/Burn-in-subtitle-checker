@@ -1,13 +1,6 @@
 # Burn-in Subtitle Checker (Mismatch Detection)
 
-A Python-based utility to detect and flag mismatches between audio transcriptions and burnt-in subtitle text. This tool is designed to automate quality control for video content, ensuring that what is spoken matches what is displayed on screen.
-
----
-
-## Scope (Demo PR)
-
-This implementation focuses on **Module 3: Mismatch Detection & Report Generation** from the pipeline.
-Audio transcription and subtitle extraction are simulated using structured input (`data.json`) to focus specifically on comparison logic and reporting.
+A Python-based utility to detect and flag mismatches between audio transcriptions and burnt-in subtitle text. Automates quality control for video content, ensuring that what is spoken matches what is displayed on screen.
 
 ---
 
@@ -19,34 +12,35 @@ Audio transcription and subtitle extraction are simulated using structured input
 
 ## Features
 
-* **Text Normalization:** Automatically strips punctuation, normalizes casing, and removes redundant spaces to ensure fair comparisons.
-* **Hybrid Scoring Engine:** Combines `fuzz.ratio` (for exact sequence matching) and `fuzz.token_sort_ratio` (for word-order independence) to handle noisy, real-world data gracefully.
-* **Automated Grading:** Classifies matches into `OK` (≥90%), `CHECK` (70%–89%), and `REVIEW` (<70%) based on similarity thresholds.
-* **Clean HTML Reporting:** Generates a lightweight, human-readable, and sortable HTML dashboard (`report.html`) summarizing the findings.
+| Feature | Details |
+|---|---|
+| **Text Normalization** | Strips punctuation, normalises casing, collapses spaces for fair comparison |
+| **Hybrid Scoring** | Combines `fuzz.ratio` + `fuzz.token_sort_ratio` with a length penalty |
+| **Automated Grading** | `OK` (≥90%) · `CHECK` (70–89%) · `REVIEW` (<70%) |
+| **Word-Level Diff Highlighting** | Changed words shown in red/green inline in the report (stdlib `difflib`) |
+| **Language Detection** | Auto-tags each segment's language (Hindi, Kannada, English, …) via `langdetect` |
+| **Per-Language Stats** | Summary breakdown table grouped by detected language |
+| **Inline Score Bar** | Colour-coded progress bar next to each score for at-a-glance severity |
+| **Timestamp Drift Detection** | Optional `subtitle_timestamp` field; flags segments with >500ms sync drift |
+| **CSV Export** | UTF-8 BOM CSV (Excel-compatible) via `--format csv` or the in-browser button |
+| **JSON Export** | Structured `report.json` with summary + full result array |
+| **HTML Report** | Filter buttons, clickable column sort, browser-side CSV export |
+| **CLI with argparse** | `--input`, `--output`, `--format`, `--filter`, `--threshold-ok/check` |
+| **Batch Processing** | Pass multiple files or a glob: `--input segments/*.json` |
 
 ---
 
 ## Tech Stack
 
 * **Python 3.x**
-* **RapidFuzz:** High-performance string matching library.
-* **HTML/CSS:** For generating the static summary report.
-
----
-
-## How it Works
-
-1. **Input Simulation:** The script ingests a list of segments containing timestamps, transcribed audio text, and OCR-extracted subtitle text.
-2. **Comparison:** The `comparator.py` module cleans both text inputs and calculates a combined fuzzy similarity score.
-3. **Reporting:** The `report.py` module takes the graded data, sorts it to show the worst mismatches first, and compiles a clean, structured HTML report highlighting problematic segments.
+* **RapidFuzz** — high-performance fuzzy string matching
+* **langdetect** — language identification
+* **difflib** — word-level diff highlighting (stdlib, zero extra deps)
+* **HTML / CSS / Vanilla JS** — static dashboard report
 
 ---
 
 ## Getting Started
-
-### Prerequisites
-
-Ensure you have Python 3 installed. Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -54,34 +48,93 @@ pip install -r requirements.txt
 
 ---
 
-## Quick Run
+## Usage
 
-Execute the main script to process the sample data and generate the report:
+### Basic run (default — processes `data.json`, writes HTML + CSV + JSON)
 
 ```bash
 python main.py
 ```
 
-Upon completion, open `report.html` in any web browser to view the results.
+### Filter to REVIEW segments only, output CSV
+
+```bash
+python main.py --filter review --format csv
+```
+
+### Batch mode — process all JSON files in a directory
+
+```bash
+python main.py --input segments/*.json --output results/
+```
+
+### Custom thresholds
+
+```bash
+python main.py --threshold-ok 0.85 --threshold-check 0.65
+```
+
+### Full help
+
+```bash
+python main.py --help
+```
 
 ---
 
-## Sample Input / Output
+## Input Format (`data.json`)
 
-* **`data.json`**: A simulated array of dictionaries representing extracted segments. Each entry includes a `timestamp`, `audio` string, and `subtitle` string.
-* **`report.html`**: The final output. A clean table sorting all segments by lowest score first, color-coding them based on their review status.
+```json
+[
+  {
+    "timestamp": 88.0,
+    "audio": "This is a complete disaster",
+    "subtitle": "यह पूरी तरह से एक आपदा है",
+    "subtitle_timestamp": 91.5
+  }
+]
+```
+
+| Field | Required | Description |
+|---|---|---|
+| `timestamp` | ✅ | Audio segment start time (seconds) |
+| `audio` | ✅ | Transcribed speech text |
+| `subtitle` | ✅ | OCR-extracted burnt-in subtitle text |
+| `subtitle_timestamp` | ❌ | Subtitle fire time — enables drift detection |
+
+---
+
+## Output Files
+
+| File | Description |
+|---|---|
+| `report.html` | Interactive dashboard with filters, sort, diff highlights, score bars |
+| `report.csv` | Flat CSV — open in Excel/Sheets, filter, annotate |
+| `report.json` | Structured JSON with summary + full results (API-ready) |
+
+---
+
+## HTML Report Features
+
+- **Filter buttons** — instantly show only OK / CHECK / REVIEW rows
+- **Clickable column sort** — sort by Timestamp or Score
+- **Browser-side CSV export** — "⬇ Export CSV" button respects active filter
+- **Word diff** — changed words highlighted red (deleted) / green (inserted)
+- **Score bar** — colour-coded progress bar per row
+- **Drift badge** — ⏱ DRIFT badge when subtitle timestamp is >500ms off
+- **Language column** — auto-detected per segment
 
 ---
 
 ## Limitations
 
-* **Simulated Input:** For the scope of this demo, input text is simulated via `data.json`. This project does not currently integrate active Automatic Speech Recognition (ASR) like Whisper or Optical Character Recognition (OCR).
-* **Basic Similarity:** The matching relies on character and token-based string similarity. It does not understand semantic similarity (e.g., "Yeah" vs. "Yes").
+* **Simulated input:** Input text is read from `data.json`. ASR (Whisper) and OCR (Tesseract/EasyOCR) integration is a future step.
+* **Fuzzy similarity only:** Does not capture semantic equivalence (e.g. "Yeah" ≈ "Yes") — see Future Improvements.
 
 ---
 
 ## Future Improvements
 
-* **ASR & OCR Integration:** Directly process video/audio files by integrating tools like OpenAI Whisper (for audio) and Tesseract or EasyOCR (for subtitles).
-* **Semantic Matching:** Integrate NLP models (like Sentence Transformers) to calculate semantic similarity, reducing false positives where meaning is preserved despite different wording.
-* **Time Alignment:** Implement intelligent sliding-window comparisons to handle slight synchronization drift between audio and subtitles.
+* **ASR & OCR integration** — Directly process video files via OpenAI Whisper + Tesseract/EasyOCR
+* **Semantic similarity** — `paraphrase-multilingual-MiniLM-L12-v2` supports Hindi, Kannada, and 50+ languages
+* **Time-window alignment** — sliding-window comparison to handle subtitle sync drift gracefully

@@ -1,0 +1,16 @@
+﻿timestamp,audio,subtitle,score,status,mismatch_type,language,drift_ms,drift_flagged,source
+88.00,This is a complete disaster,यह पूरी तरह से एक आपदा है,0.12,REVIEW,LANGUAGE_SWITCH,English,,False,data.json
+75.50,उसने मुझे बताया कि वह जा रहा है,उसने कहा कि वो जाएगा,0.47,REVIEW,WORD_SUBSTITUTION,Hindi,,False,data.json
+115.90,मुझे नहीं पता,मुझे कुछ नहीं मालूम,0.54,REVIEW,WORD_SUBSTITUTION,Hindi,,False,data.json
+142.80,ನನಗೆ ಇದು ಇಷ್ಟ ಇಲ್ಲ,ನನಗೆ ಇದು ತುಂಬಾ ಇಷ್ಟ,0.74,CHECK,WORD_SUBSTITUTION,Kannada,,False,data.json
+178.90,ನಾನು ನಾಳೆ ಬೆಳಗ್ಗೆ ಸಿಗುತ್ತೇನೆ,ನಾಳೆ ಬೆಳಗ್ಗೆ ಸಿಗೋಣ,0.74,CHECK,WORD_SUBSTITUTION,Kannada,,False,data.json
+135.20,ನೀನ್ ಎಲ್ಲಿಗ್ ಹೋಗ್ತಾ ಇದ್ಯಾ?,ನೀನು ಎಲ್ಲಿಗೆ ಹೋಗುತ್ತಿದ್ದೀಯಾ?,0.79,CHECK,WORD_SUBSTITUTION,Kannada,,False,data.json
+165.40,ಅವನ ಹೆಸರು ಏನು?,ಅವನ ಹೆಸರೇನು?,0.82,CHECK,WORD_SUBSTITUTION,Kannada,,False,data.json
+10.20,वो कहाँ गई थी,वो कहाँ गया था,0.89,CHECK,WORD_SUBSTITUTION,Hindi,,False,data.json
+60.10,मुझे यह बिल्कुल पसंद नहीं आया,मुझे ये बिल्कुल पसंद नहीं है,0.89,CHECK,WORD_SUBSTITUTION,Hindi,,False,data.json
+150.10,"ಹೌದು, ನಾನು ಬರುತ್ತೇನೆ",ಹೌದು ನಾನು ಬರ್ತೀನಿ,0.95,OK,OK,Kannada,,False,data.json
+190.20,ನನಗೆ ಗೊತ್ತಿಲ್ಲ,ನನಗೇನು ಗೊತ್ತಿಲ್ಲ,0.95,OK,OK,Kannada,,False,data.json
+45.70,ठीक है भाई,ठीक है भाई,1.00,OK,OK,Hindi,,False,data.json
+52.30,"अरे भाई, तुम कहाँ थे?",अरे भाई तुम कहां थे,1.00,OK,OK,Hindi,,False,data.json
+102.40,मैं तुम्हें कल सुबह मिलूंगा,मैं तुम्हें कल सुबह मिलूँगा,1.00,OK,OK,Hindi,,False,data.json
+120.50,ನೀವು ಹೇಗಿದ್ದೀರಿ?,ನೀವು ಹೇಗಿದ್ದೀರಿ?,1.00,OK,OK,Kannada,,False,data.json

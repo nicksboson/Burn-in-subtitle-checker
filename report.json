@@ -1,0 +1,202 @@
+{
+  "generated_at": "2026-05-10 02:22:28",
+  "summary": {
+    "total": 15,
+    "ok": 6,
+    "check": 6,
+    "review": 3,
+    "avg_score": 0.793,
+    "by_language": {
+      "Hindi": 7,
+      "Kannada": 7,
+      "English": 1
+    },
+    "by_mismatch_type": {
+      "WORD_SUBSTITUTION": 8,
+      "OK": 6,
+      "LANGUAGE_SWITCH": 1
+    }
+  },
+  "results": [
+    {
+      "timestamp": 88.0,
+      "audio": "This is a complete disaster",
+      "subtitle": "यह पूरी तरह से एक आपदा है",
+      "score": 0.12,
+      "status": "REVIEW",
+      "mismatch_type": "LANGUAGE_SWITCH",
+      "language": "English",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 75.5,
+      "audio": "उसने मुझे बताया कि वह जा रहा है",
+      "subtitle": "उसने कहा कि वो जाएगा",
+      "score": 0.47,
+      "status": "REVIEW",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 115.9,
+      "audio": "मुझे नहीं पता",
+      "subtitle": "मुझे कुछ नहीं मालूम",
+      "score": 0.54,
+      "status": "REVIEW",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 142.8,
+      "audio": "ನನಗೆ ಇದು ಇಷ್ಟ ಇಲ್ಲ",
+      "subtitle": "ನನಗೆ ಇದು ತುಂಬಾ ಇಷ್ಟ",
+      "score": 0.74,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 178.9,
+      "audio": "ನಾನು ನಾಳೆ ಬೆಳಗ್ಗೆ ಸಿಗುತ್ತೇನೆ",
+      "subtitle": "ನಾಳೆ ಬೆಳಗ್ಗೆ ಸಿಗೋಣ",
+      "score": 0.74,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 135.2,
+      "audio": "ನೀನ್ ಎಲ್ಲಿಗ್ ಹೋಗ್ತಾ ಇದ್ಯಾ?",
+      "subtitle": "ನೀನು ಎಲ್ಲಿಗೆ ಹೋಗುತ್ತಿದ್ದೀಯಾ?",
+      "score": 0.79,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 165.4,
+      "audio": "ಅವನ ಹೆಸರು ಏನು?",
+      "subtitle": "ಅವನ ಹೆಸರೇನು?",
+      "score": 0.82,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 10.2,
+      "audio": "वो कहाँ गई थी",
+      "subtitle": "वो कहाँ गया था",
+      "score": 0.89,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 60.1,
+      "audio": "मुझे यह बिल्कुल पसंद नहीं आया",
+      "subtitle": "मुझे ये बिल्कुल पसंद नहीं है",
+      "score": 0.89,
+      "status": "CHECK",
+      "mismatch_type": "WORD_SUBSTITUTION",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 150.1,
+      "audio": "ಹೌದು, ನಾನು ಬರುತ್ತೇನೆ",
+      "subtitle": "ಹೌದು ನಾನು ಬರ್ತೀನಿ",
+      "score": 0.95,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 190.2,
+      "audio": "ನನಗೆ ಗೊತ್ತಿಲ್ಲ",
+      "subtitle": "ನನಗೇನು ಗೊತ್ತಿಲ್ಲ",
+      "score": 0.95,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 45.7,
+      "audio": "ठीक है भाई",
+      "subtitle": "ठीक है भाई",
+      "score": 1.0,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 52.3,
+      "audio": "अरे भाई, तुम कहाँ थे?",
+      "subtitle": "अरे भाई तुम कहां थे",
+      "score": 1.0,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 102.4,
+      "audio": "मैं तुम्हें कल सुबह मिलूंगा",
+      "subtitle": "मैं तुम्हें कल सुबह मिलूँगा",
+      "score": 1.0,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Hindi",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    },
+    {
+      "timestamp": 120.5,
+      "audio": "ನೀವು ಹೇಗಿದ್ದೀರಿ?",
+      "subtitle": "ನೀವು ಹೇಗಿದ್ದೀರಿ?",
+      "score": 1.0,
+      "status": "OK",
+      "mismatch_type": "OK",
+      "language": "Kannada",
+      "drift_ms": null,
+      "drift_flagged": false,
+      "source": "data.json"
+    }
+  ]
+}
